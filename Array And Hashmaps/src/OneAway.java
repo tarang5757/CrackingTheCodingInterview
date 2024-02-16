@@ -18,6 +18,7 @@ public class OneAway {
         return false;
     }
 
+    // check
     public static boolean OneEditReplace(String s1, String s2) {
 
         boolean foundDifference = false;
