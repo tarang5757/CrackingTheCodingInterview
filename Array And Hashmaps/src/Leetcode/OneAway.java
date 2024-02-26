@@ -1,3 +1,7 @@
+package Leetcode;
+
+import java.util.*;
+
 public class OneAway {
 
     // The lengths of the strings will indicate what the string needs (replacement,
