@@ -1,8 +1,0 @@
-Learn Time complexity:
-https://www.youtube.com/watch?v=KXAbAa1mieU&t=95s&ab_channel=GeeksforGeeks
-
--Drop constant multipliers
--Drop lower order terms
-
-nlogn time complexity:
--almost all the time its the sorting algorithms that have time complexity of  nLogn.
