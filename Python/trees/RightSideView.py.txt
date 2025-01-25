@@ -1,0 +1,62 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        Returns the values of the nodes that are visible from the right side of a binary tree.
+
+        # What time complexity did the solution have?
+        The time complexity of this algorithm is O(N).
+
+        # How did they achieve said time complexity?
+        We achieved this time complexity because we used a Breadth-First Search (BFS) algorithm to traverse each node in each level of the tree.
+
+        # What techniques did they use?
+        - Used Breadth-First Search algorithm to perform level-order traversal.
+        - Collected all nodes in each level and used an array to store the last node of each level.
+
+        # Why does that solve the problem?
+        - This solves the problem because we are essentially using a traversal algorithm to collect all the nodes we visit and take their values. 
+        - We then extract the last node in each level since they are the rightmost nodes (or the nodes we first SEE from the right side).
+
+        Time Complexity: O(N)
+        - We visit each node exactly once using Breadth-First Search (BFS), where N is the total number of nodes in the tree.
+
+        Space Complexity: O(W)
+        - The space complexity is determined by the maximum width (W) of the tree, which is the maximum number of nodes in any level of the tree.
+        """
+
+        # If the tree is empty, return an empty list
+        if not root:
+            return []
+
+        # Initialize a deque (double-ended queue) for BFS traversal
+        queue = deque()
+        queue.append(root)  # Start with the root node
+
+        result = []  # To store the rightmost values of each level
+
+        # Perform level-order traversal using BFS
+        while queue:
+            level = []  # To store all nodes' values at the current level
+
+            # Iterate over all nodes at the current level
+            for _ in range(len(queue)):
+                curr = queue.popleft()  # Remove the front node from the queue
+                level.append(curr.val)  # Add its value to the current level list
+
+                # Add left and right children (if any) to the queue for the next level
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+
+            # Append the last value of the current level to the result, representing the rightmost node
+            result.append(level[-1])
+
+        return result  # Return the list of right-side view values
