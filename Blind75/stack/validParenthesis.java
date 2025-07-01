@@ -19,7 +19,7 @@ class Solution {
             }
         }
 
-        return stack.isEmpty() == true;
+        return stack.isEmpty();
 
     }
 

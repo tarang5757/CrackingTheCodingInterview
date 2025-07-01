@@ -42,7 +42,10 @@ def find_kday_period(best_seller, k):
 
     while r < len(best_seller):
         # Add current book to the window
-        books_count[best_seller[r]] = books_count.get(best_seller[r], 0) + 1
+        if best_seller[r] not in books_count:
+            books_count[best_seller[r]] = 1
+        else:
+            books_count[best_seller[r]] += 1
 
         # If window size equals k
         if r - l + 1 == k:
@@ -79,6 +82,44 @@ print("outcome: ", test2, "expected outcome: False",)
 
 test3 = find_kday_period(["book1", "book2", "book3"], 3)
 print("outcome: ", test3, "expected outcome: True",)
+
+
+
+"""
+Goal: Find if any slice of length k has all unique items.
+
+Why sliding window? Because checking every slice from scratch is too slow.
+
+How sliding window works here:
+
+Keep two pointers: left (l) and right (r).
+
+Move right pointer forward, adding books to a frequency map.
+
+Once window size is k, check if number of unique books == k.
+
+Then remove the book at left pointer from the map, move left forward.
+
+Repeat until you find a unique window or reach the end.
+
+Key insight:
+The frequency map size = number of unique books in current window.
+So if size == k, all are unique.
+
+Important detail: Remove books from map when their count drops to zero to keep map accurate.
+
+Complexity:
+Time: O(n) because each book enters and leaves the window once.
+Space: O(k) for the map.
+
+Use this pattern whenever:
+You need to check conditions on fixed-size subarrays and want to do it efficiently.
+
+
+
+
+
+"""
 
 
 
