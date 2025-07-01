@@ -26,6 +26,11 @@
 - we will keep track of the longest subarray.
 """
 
+"""
+Time complexity: o(n)
+space complexity: o(1) - constant space
+"""
+
 def max_no_bad_days(sales):
     l, r = 0, 0
     curr_max = 0
