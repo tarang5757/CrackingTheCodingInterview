@@ -1,0 +1,62 @@
+# Fixed length window
+def fixed_length_window(arr, k):
+  initialize:
+  - l and r to 0 (empty window)
+  - data structures to track window info
+  - cur_best to 0
+  while we can grow the window (r < len(arr))
+    grow the window (update data structures and increase r)
+    if the window has the correct length (r - l == k)
+      update cur_best if needed
+      shrink the window (update data structures and increase l)
+  return cur_best
+
+
+# Resetting window
+def resetting_window(arr):
+initialize:
+  - l and r to 0 (empty window)
+  - data structures to track window info
+  - cur_best to 0
+  while we can grow the window (r < len(arr))
+    if the window is still valid with one more element
+      grow the window (update data structures and increase r)
+      update cur_best if needed
+    else
+      reset window and data structures past the problematic element
+  return cur_best
+
+
+# Maximum window
+def maximum_window(arr):
+  initialize:
+  - l and r to 0 (empty window)
+  - data structures to track window info
+  - cur_best to 0
+  while we can grow the window (r < len(arr))
+    if the window would still be valid with one more element
+      grow the window (update data structures and increase r)
+      update cur_best if needed
+    else if the window is empty
+      advance both l and r
+    else
+      shrink the window (update data structures and increase l)
+  return cur_best
+
+
+
+# minimum window
+def minimum_window(arr):
+  initialize:
+  - l and r to 0 (empty window)
+  - data structures to track window info
+  - cur_best to infinity
+  while true
+    if the window must grow to become valid
+      if the window cannot grow (r == len(arr))
+        break
+      grow the window (update data structures and increase r)
+    else
+      update cur_best if needed
+      shrink the window (update data structures and increase l)
+  return cur_best
